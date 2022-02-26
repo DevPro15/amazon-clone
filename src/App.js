@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { useStateValue } from "./StateProvider";
+import Header from "./Header";
+import Home from "./Home";
+import Checkout from "./Checkout";
+import Login from "./Login";
+// import { auth } from "./firebase";
 
 function App() {
+  // const [{ basket }, dispatch] = useStateValue();
+
+  //useEffect >>>>>>>>>> powerful
+  //Piece of code which runs based on a given condition
+
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       //the user is logged in...
+  //     } else {
+  //       // the user is logged out...
+  //     }
+  //   });
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/checkout">
+            <Header />
+            <Checkout />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Header />
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
